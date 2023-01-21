@@ -7,7 +7,7 @@ U-Net written in Jax and Flax.
 ### Training
 
 ```bash
-python train.py
+python main.py
 ```
 
 ### Data directory structure
