@@ -41,7 +41,7 @@ data
 
     -lr, --learning_rate - learning rate (default: 0.001)
     
-    `--input-dir` - Path to the directory containing the data. (default: ./data)
+    -i, --input-dir - Path to the directory containing the data. (default: ./data)
     
-    `--output_dir` - Path to the directory where the model and logs should be saved. (default: ./output)
+    -o, --output-dir - Path to the directory where the model and logs should be saved. (default: ./output)
 
