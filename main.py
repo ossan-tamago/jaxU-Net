@@ -74,10 +74,6 @@ def dice_loss(predictions, targets):
     return 1 - jnp.mean(2 * jnp.sum(predictions * targets) / (jnp.sum(predictions) + jnp.sum(targets)))
 
 
-# def update_ema(p_cur, p_new, momentum: float = 0.999):
-#     return momentum * p_cur + (1 - momentum) * p_new
-
-
 @jax.jit
 def train_step(state, x, y, rng):
     def loss_fn(params):
