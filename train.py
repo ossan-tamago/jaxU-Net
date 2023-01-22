@@ -13,6 +13,7 @@ import tensorflow as tf
 from tqdm import tqdm
 
 from model import UNet
+from preprocess import preprocess_image
 
 
 def create_output_dir(output_dir: Path) -> Tuple[Path, Path, Path]:
@@ -25,19 +26,6 @@ def create_output_dir(output_dir: Path) -> Tuple[Path, Path, Path]:
         log_dir.mkdir()
 
     return output_dir, ckpt_dir, log_dir
-
-
-def preprocess_image(path, image_size):
-    image = tf.io.read_file(path)
-    image = tf.image.decode_jpeg(image, channels=3)
-    height = tf.shape(image)[0]
-    width = tf.shape(image)[1]
-    crop_size = tf.minimum(height, width)
-    image = tf.image.crop_to_bounding_box(image, (height - crop_size) // 2, (width - crop_size) // 2, crop_size,
-                                          crop_size)
-    image = tf.image.resize(image, size=(image_size, image_size), antialias=True)
-
-    return tf.clip_by_value(image / 255.0, 0.0, 1.0)
 
 
 def prepare_datasets(input_dir: Path, image_size: int = 64, batch_size: int = 64):

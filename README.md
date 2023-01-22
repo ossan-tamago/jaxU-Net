@@ -7,7 +7,13 @@ U-Net written in Jax and Flax.
 ### Training
 
 ```bash
-python main.py
+python train.py
+```
+
+### Predicting
+
+```bash
+python predict.py -c <checkpoint_dir>
 ```
 
 ### Data directory structure
